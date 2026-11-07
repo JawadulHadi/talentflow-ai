@@ -1,0 +1,103 @@
+import io
+import sys
+from svglib.svglib import svg2rlg
+from reportlab.graphics import renderPM
+from reportlab.graphics.shapes import Drawing
+
+# Explicitly typed layout string markup matrix
+FIXED_SVG_CODE: str = """<svg xmlns="http://w3.org" viewBox="0 0 1280 640" width="1280" height="640" role="img" aria-label="TalentFlow AI — AI-powered applicant tracking system">
+  <defs>
+    <linearGradient id="gh-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B0F19"/>
+      <stop offset="50%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#070A10"/>
+    </linearGradient>
+    <linearGradient id="gh-purple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A855F7"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
+    </linearGradient>
+    <linearGradient id="gh-flow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06B6D4" stop-opacity="0.35"/>
+      <stop offset="50%" stop-color="#A855F7"/>
+      <stop offset="100%" stop-color="#10B981" stop-opacity="0.35"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background Base Canvas -->
+  <rect width="1280" height="640" fill="#0B0F19"/>
+  <rect width="1280" height="640" fill="none" stroke="#1F2937" stroke-width="4"/>
+
+  <!-- Matrix Grid Overlays -->
+  <g opacity="0.05" stroke="#FFFFFF" stroke-width="2">
+    <line x1="0" y1="160" x2="1280" y2="160"/>
+    <line x1="0" y1="480" x2="1280" y2="480"/>
+    <line x1="320" y1="0" x2="320" y2="640"/>
+    <line x1="960" y1="0" x2="960" y2="640"/>
+  </g>
+
+  <!-- Left Content Core Geometry -->
+  <g font-family="ui-sans-serif, -apple-system, 'Segoe UI', Inter, sans-serif">
+    <text x="80" y="240" font-size="76" font-weight="800" fill="#FFFFFF" letter-spacing="-1.5">TalentFlow AI</text>
+    <text x="80" y="305" font-size="28" font-weight="500" fill="#E5E7EB">Applicant Tracking System,</text>
+    <text x="80" y="345" font-size="28" font-weight="500" fill="#E5E7EB">Accelerated by an AI agent.</text>
+    
+    <!-- Aligned Badge System Block -->
+    <g font-size="16" font-weight="600" letter-spacing="0.2">
+      <!-- Tag 1: STAR Scorecards -->
+      <rect x="80" y="400" rx="8" ry="8" width="165" height="38" fill="#06B6D4" opacity="0.12"/>
+      <rect x="80" y="400" rx="8" ry="8" width="165" height="38" fill="none" stroke="#06B6D4" stroke-width="1.5" opacity="0.3"/>
+      <text x="96" y="424" fill="#22D3EE">STAR Scorecards</text>
+      
+      <!-- Tag 2: Human-in-loop -->
+      <rect x="265" y="400" rx="8" ry="8" width="160" height="38" fill="#A855F7" opacity="0.12"/>
+      <rect x="265" y="400" rx="8" ry="8" width="160" height="38" fill="none" stroke="#A855F7" stroke-width="1.5" opacity="0.3"/>
+      <text x="281" y="424" fill="#C084FC">Human-in-loop</text>
+      
+      <!-- Tag 3: Hiring Analytics -->
+      <rect x="445" y="400" rx="8" ry="8" width="155" height="38" fill="#10B981" opacity="0.12"/>
+      <rect x="445" y="400" rx="8" ry="8" width="155" height="38" fill="none" stroke="#10B981" stroke-width="1.5" opacity="0.3"/>
+      <text x="461" y="424" fill="#34D399">Hiring Analytics</text>
+    </g>
+  </g>
+
+  <!-- Right Side Pipeline Visuals — Recentered and Balanced -->
+  <g transform="translate(680, 310)">
+    <path d="M 0 140 C 0 20, 150 -60, 265 -60 C 380 -60, 510 20, 510 140"
+          fill="none" stroke="#A855F7" stroke-width="16" stroke-linecap="round" opacity="0.95"/>
+
+    <!-- Track Source Node (Sourced) -->
+    <circle cx="0" cy="140" r="48" fill="none" stroke="#06B6D4" stroke-width="3"/>
+    <circle cx="0" cy="140" r="28" fill="#06B6D4"/>
+
+    <!-- Central AI Core Triage Unit -->
+    <circle cx="265" cy="-60" r="72" fill="none" stroke="#A855F7" stroke-width="2.5" stroke-dasharray="12 8"/>
+    <circle cx="265" cy="-60" r="48" fill="none" stroke="#06B6D4" stroke-width="1.5" stroke-dasharray="6 6"/>
+    <circle cx="265" cy="-60" r="34" fill="#7C3AED"/>
+    <circle cx="265" cy="-60" r="15" fill="#FFFFFF" opacity="0.95"/>
+
+    <!-- Success Node (Hired Asset) -->
+    <circle cx="510" cy="140" r="48" fill="none" stroke="#10B981" stroke-width="4"/>
+    <circle cx="510" cy="140" r="28" fill="#10B981"/>
+    <path d="M 495 140 L 505 150 L 524 128" fill="none" stroke="#FFFFFF" stroke-width="5"
+          stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>"""
+
+def run_pure_python_conversion() -> None:
+    output_png_path: str = "j:/Administrator/repositories/talent_flow/assets/talentflow_banner.png"
+    print("Parsing SVG structural vectors inside pure Python...")
+    
+    svg_bytes: io.BytesIO = io.BytesIO(FIXED_SVG_CODE.encode('utf-8'))
+    drawing: Drawing | None = svg2rlg(svg_bytes)
+    
+    # Explicit Type Guard: Resolves the 'None' assignment trace error
+    if drawing is None:
+        print("Error: The vector string failed to build a valid representation tree.", file=sys.stderr)
+        sys.exit(1)
+        
+    print("Writing high-resolution raster outputs to target directory...")
+    renderPM.drawToFile(drawing, output_png_path, fmt="PNG")
+    print(f"✓ Success! Fixed 1280x640 banner outputted to: {output_png_path}")
+
+if __name__ == "__main__":
+    run_pure_python_conversion()
