@@ -104,6 +104,7 @@ The agent reads a snapshot and **never writes**. A human approves every proposal
 - **Team & Integrations** — Role hierarchy with pending invites; simulated job-board and HRIS connections.
 - **Themes** - Frosted Slate, Frosted Ember, Paper Light and Signal Emerald.
 - **Branding** (`/brand`) - Set the employer brand candidates see: company name, logo, colour, fonts and email signature, with a live preview of the job post, candidate email and PDF scorecard. Saved branding is applied to outbound emails and every exported PDF.
+- **Hiring plan** (`/deliverables`) - The requisition's working plan: document readiness, pipeline and scorecard progress, the job description with a branded candidate preview, the weighted STAR interview plan, and PDF exports for the job description, guide and full hiring pack.
 
 ---
 
@@ -113,9 +114,11 @@ The agent reads a snapshot and **never writes**. A human approves every proposal
 src/
   routes/                 one file per page: index (analytics), pipeline, agent, jobs, team,
                           integrations, scorecard, deliverables, brand; __root is the HTML shell
-  components/             app shell, Kanban board, candidate drawer, add-candidate dialog, ui/ (shadcn)
+  components/             app shell, Kanban board, candidate drawer, add-candidate dialog,
+                          brand previews (job post, email, scorecard), ui/ (shadcn)
   stores/
     ats-store.ts          candidates, jobs, team, integrations, ratings, JD; actions and migration
+    brand-store.ts        employer branding (logo, colours, fonts, email signature) with a defaults merge
     ui-store.ts           theme and the offline-banner flag
   lib/ats/
     types.ts              domain types and enums (stages, sources, statuses, reasons)
@@ -127,7 +130,8 @@ src/
     agent.server.ts       Claude loop and scorecard summary (server only)
     agent.functions.ts    TanStack server functions that wrap agent.server.ts
     ai-service.ts         client entry point: Claude first, local fallback second
-    pdf.ts                jsPDF exports
+    brand.ts              employer brand config, presets, colour contrast and logo upload helpers
+    pdf.ts                jsPDF exports (branded header and section colours)
 ```
 
 ---

@@ -15,9 +15,17 @@ All notable changes to TalentFlow AI are documented here. The format follows
   scorecard PDF header at desktop or phone width. Saved branding is applied to outbound candidate
   emails (`logEmail`) and to every PDF exported from Deliverables and Scorecard, and persists
   through the shared storage adapter (`qeloma-brand-v1`, versioned with a defaults merge).
+- **Hiring plan** (`/deliverables`): the requisition's working plan instead of a bare editor. It
+  reads the real job, team and pipeline data — status, department, location, pay, posting date,
+  hiring manager and candidate count — and shows document readiness (job description, interview
+  plan, scorecards), scorecard completion, the weighted STAR interview plan grouped by competency,
+  and the job description with the same branded candidate preview used on the Branding page. Each
+  document exports to PDF with the saved branding applied.
 
 ### Changed
 
+- The `/deliverables` page is now labelled **Hiring plan** in the sidebar and page header, which is
+  the ATS-native name for a requisition's job description, interview plan and scorecard set.
 - `npm run build` now targets a Node server outside Vercel (`node-server` preset) and
   `npm start` serves it, so the app can be deployed to any container or VM. Vercel builds
   still emit the Build Output API via the `vercel` preset.

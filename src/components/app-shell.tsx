@@ -5,7 +5,7 @@ import {
   Bot,
   Briefcase,
   ClipboardCheck,
-  FileText,
+  ClipboardList,
   KanbanSquare,
   Paintbrush,
   RotateCcw,
@@ -36,7 +36,7 @@ const nav = [
   { to: "/team", label: "Team", icon: Users },
   { to: "/integrations", label: "Integrations", icon: Share2 },
   { to: "/scorecard", label: "Scorecard", icon: ClipboardCheck },
-  { to: "/deliverables", label: "Deliverables", icon: FileText },
+  { to: "/deliverables", label: "Hiring plan", icon: ClipboardList },
   { to: "/brand", label: "Branding", icon: Paintbrush },
 ] as const;
 
