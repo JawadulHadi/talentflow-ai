@@ -1,7 +1,6 @@
 
 # TalentFlow-AI
 
-```markdown
 <div align="center">
 
 <picture>
@@ -24,7 +23,6 @@
 
 > **Live demo:** <https://talentflow-ai.vercel.app> — demo data lives in your browser (`localStorage`); use the reset button in the header to restore it.
 
----
 
 ## System Architecture
 
