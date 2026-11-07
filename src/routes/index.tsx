@@ -29,13 +29,13 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Recruitment analytics — TalntFlow AI" },
+      { title: "Recruitment analytics — TalentFlow AI" },
       {
         name: "description",
         content:
           "Live time-to-hire, source effectiveness, funnel and diversity metrics for your hiring pipeline.",
       },
-      { property: "og:title", content: "Recruitment analytics — TalntFlow AI" },
+      { property: "og:title", content: "Recruitment analytics — TalentFlow AI" },
       {
         property: "og:description",
         content: "Live time-to-hire, source effectiveness, funnel and diversity metrics.",

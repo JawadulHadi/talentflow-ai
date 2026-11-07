@@ -22,12 +22,12 @@ import type { Recommendation } from "@/lib/ats/types";
 export const Route = createFileRoute("/scorecard")({
   head: () => ({
     meta: [
-      { title: "Candidate scorecard — TalntFlow AI" },
+      { title: "Candidate scorecard — TalentFlow AI" },
       {
         name: "description",
         content: "Rate 10 STAR behavioural questions and get a weighted hiring recommendation.",
       },
-      { property: "og:title", content: "Candidate scorecard — TalntFlow AI" },
+      { property: "og:title", content: "Candidate scorecard — TalentFlow AI" },
       {
         property: "og:description",
         content: "STAR competency ratings with a weighted hiring recommendation.",
@@ -62,7 +62,7 @@ function ScorecardPage() {
     setAgentRec(res.data);
     setBusy(false);
     toast.success(
-      res.fallback ? "Recommendation calculated locally" : "TalntFlow Agent recommendation ready",
+      res.fallback ? "Recommendation calculated locally" : "TalentFlow Agent recommendation ready",
     );
   };
 
@@ -182,11 +182,11 @@ function ScorecardPage() {
           </div>
           <Button className="w-full" onClick={runAgent} disabled={busy}>
             {busy ? <Loader2 className="size-4 animate-spin" /> : <Wand2 className="size-4" />}
-            Ask TalntFlow Agent
+            Ask TalentFlow Agent
           </Button>
           <p className="text-xs text-muted-foreground">
             Source:{" "}
-            {rec.generatedBy === "ai" ? "Claude (TalntFlow Agent)" : "local weighted engine"}
+            {rec.generatedBy === "ai" ? "Claude (TalentFlow Agent)" : "local weighted engine"}
           </p>
         </aside>
       </div>

@@ -29,12 +29,12 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/jobs")({
   head: () => ({
     meta: [
-      { title: "Jobs — TalntFlow AI" },
+      { title: "Jobs — TalentFlow AI" },
       {
         name: "description",
         content: "Open, publish and close job requisitions and add candidates to them.",
       },
-      { property: "og:title", content: "Jobs — TalntFlow AI" },
+      { property: "og:title", content: "Jobs — TalentFlow AI" },
     ],
   }),
   component: JobsPage,

@@ -1,4 +1,4 @@
-# Contributing to TalntFlow AI
+# Contributing to TalentFlow AI
 
 Thanks for helping out. This guide covers setup, the checks a pull request must pass, and the
 rules that keep the codebase consistent.
@@ -8,8 +8,8 @@ rules that keep the codebase consistent.
 Prerequisites: Node.js 22.12 or newer, and npm.
 
 ```sh
-git clone https://github.com/JawadulHadi/talnt-flow-ai.git
-cd talnt-flow-ai
+git clone https://github.com/JawadulHadi/talentflow-ai.git
+cd talentflow-ai
 npm install          # .npmrc sets legacy-peer-deps
 npm run dev          # http://localhost:3000
 ```

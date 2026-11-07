@@ -4,7 +4,7 @@ import { getAgentStatus, runAgentTask, summarizeScorecard } from "./agent.functi
 import type { Candidate, JobPosting, Ratings, Recommendation, StarQuestion } from "./types";
 
 /**
- * TalntFlow Agent client. Every call tries Claude through the server functions first and
+ * TalentFlow Agent client. Every call tries Claude through the server functions first and
  * falls back to the local engines; `fallback: true` tells the caller to show the offline banner.
  */
 export interface AgentResult<T> {

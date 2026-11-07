@@ -1,6 +1,6 @@
 # Architecture
 
-TalntFlow AI is a single TanStack Start app. The UI and all ATS data live in the browser. The
+TalentFlow AI is a single TanStack Start app. The UI and all ATS data live in the browser. The
 server renders the app shell and hosts the server functions that call Claude.
 
 ## Stack

@@ -12,7 +12,7 @@ import type {
 import { STAGES } from "./types";
 
 /**
- * TalntFlow Agent — shared, isomorphic part.
+ * TalentFlow Agent — shared, isomorphic part.
  *
  * The agent never mutates the pipeline. It reads a snapshot through tools and returns
  * proposals; a recruiter approves each one in the UI before it is applied. The same

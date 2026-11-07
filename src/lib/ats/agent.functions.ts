@@ -8,7 +8,7 @@ import {
 } from "./agent";
 
 /**
- * Server functions for the TalntFlow Agent. Claude is enabled by setting ANTHROPIC_API_KEY
+ * Server functions for the TalentFlow Agent. Claude is enabled by setting ANTHROPIC_API_KEY
  * on the server; without it every call returns null and the client uses its local engine.
  */
 

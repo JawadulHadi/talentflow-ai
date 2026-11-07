@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to TalntFlow AI are documented here. The format follows
+All notable changes to TalentFlow AI are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
@@ -8,11 +8,11 @@ All notable changes to TalntFlow AI are documented here. The format follows
 
 ## [1.0.0] - 2026-09-30
 
-First production release, deployed at https://talntflow-ai.vercel.app.
+First production release, deployed at <https://talentflow-ai.vercel.app>.
 
 ### Added
 
-- **TalntFlow Agent** (`/agent`): a tool-use loop on Claude (`claude-opus-5-5`) that reads a
+- **TalentFlow Agent** (`/agent`): a tool-use loop on Claude (`claude-opus-5-5`) that reads a
   read-only pipeline snapshot and returns proposals (stage moves, reminder or feedback emails,
   notes). Each proposal applies only after a recruiter approves it. Without `ANTHROPIC_API_KEY`,
   local triage rules produce the same kind of proposals.
@@ -31,7 +31,7 @@ First production release, deployed at https://talntflow-ai.vercel.app.
 - Diversity analytics count only candidates who disclosed the attribute and show the disclosure rate.
 - Integration sync times are stored as ISO timestamps and shown relative to now.
 - Pages render after browser data loads, which removes a hydration mismatch and a flash of demo data.
-- Remaining "Qeloma Agent for Recruiter" text renamed to TalntFlow AI.
+- Remaining "Qeloma Agent for Recruiter" text renamed to TalentFlow AI.
 
 ### Fixed
 
@@ -60,5 +60,5 @@ First production release, deployed at https://talntflow-ai.vercel.app.
 - Browser data saved under `qeloma-ats-v1` migrates automatically on first load.
 - Data created with the unreleased build from commit `28bac4c` (key `qeloma-ats-v2`) is not migrated.
 
-[Unreleased]: https://github.com/JawadulHadi/talnt-flow-ai/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/JawadulHadi/talnt-flow-ai/releases/tag/v1.0.0
+[Unreleased]: https://github.com/JawadulHadi/talentflow-ai/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/JawadulHadi/talentflow-ai/releases/tag/v1.0.0

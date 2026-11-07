@@ -13,13 +13,13 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/agent")({
   head: () => ({
     meta: [
-      { title: "Agent — TalntFlow AI" },
+      { title: "Agent — TalentFlow AI" },
       {
         name: "description",
         content:
           "An AI recruiting agent that reviews the pipeline and proposes next steps for your approval.",
       },
-      { property: "og:title", content: "Agent — TalntFlow AI" },
+      { property: "og:title", content: "Agent — TalentFlow AI" },
     ],
   }),
   component: AgentPage,
@@ -78,7 +78,7 @@ function AgentPage() {
     if (p.kind === "move") moveStage(c.id, p.toStage);
     if (p.kind === "email") sendEmail(c.id, p.template);
     if (p.kind === "note") {
-      addComment(c.id, p.note, 0, { author: "TalntFlow Agent", role: "AI note, approved by you" });
+      addComment(c.id, p.note, 0, { author: "TalentFlow Agent", role: "AI note, approved by you" });
     }
     decide(p.id, "applied");
   };
@@ -90,7 +90,7 @@ function AgentPage() {
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="text-xs uppercase tracking-[0.25em] text-primary">Autonomous assistant</p>
-          <h1 className="text-4xl font-bold tracking-tight text-foreground">TalntFlow Agent</h1>
+          <h1 className="text-4xl font-bold tracking-tight text-foreground">TalentFlow Agent</h1>
           <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
             The agent works in a loop: it reads the pipeline through tools, decides what to look at
             next, and ends with proposals. Nothing changes until you approve it.

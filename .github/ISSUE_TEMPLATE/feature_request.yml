@@ -1,5 +1,5 @@
 name: Feature request
-description: Suggest an improvement to TalntFlow AI.
+description: Suggest an improvement to TalentFlow AI.
 labels: ["enhancement"]
 body:
   - type: textarea
