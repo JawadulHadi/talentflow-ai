@@ -6,13 +6,13 @@ export const Route = createFileRoute("/pipeline")({
     typeof search["job"] === "string" && search["job"] ? { job: search["job"] } : {},
   head: () => ({
     meta: [
-      { title: "Candidate Pipeline — TalntFlow AI" },
+      { title: "Candidate Pipeline — TalentFlow AI" },
       {
         name: "description",
         content:
           "Kanban pipeline board for moving candidates through Sourced, Screened, Interviewing, Offer and Hired.",
       },
-      { property: "og:title", content: "Candidate Pipeline — TalntFlow AI" },
+      { property: "og:title", content: "Candidate Pipeline — TalentFlow AI" },
       {
         property: "og:description",
         content: "Per-job candidate pipeline with drag-and-drop stages.",

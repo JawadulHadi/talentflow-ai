@@ -93,7 +93,7 @@ export function buildSeedTeam(): TeamMember[] {
     {
       id: "tm-2",
       name: "Maya Chen",
-      email: "maya@talntflow.ai",
+      email: "maya@TalentFlow.ai",
       role: "Hiring Manager",
       department: "Design",
       status: "Active",
@@ -101,7 +101,7 @@ export function buildSeedTeam(): TeamMember[] {
     {
       id: "tm-3",
       name: "Alex Mercer",
-      email: "alex@talntflow.ai",
+      email: "alex@TalentFlow.ai",
       role: "Senior Recruiter",
       department: "Talent",
       status: "Active",
@@ -109,7 +109,7 @@ export function buildSeedTeam(): TeamMember[] {
     {
       id: "tm-4",
       name: "Sarah Jenkins",
-      email: "sarah@talntflow.ai",
+      email: "sarah@TalentFlow.ai",
       role: "Interviewer",
       department: "Engineering",
       status: "Active",

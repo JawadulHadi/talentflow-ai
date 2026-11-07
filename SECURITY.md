@@ -22,7 +22,7 @@ mitigation plan. Please give reasonable time for a fix before disclosing publicl
 
 ## Deployment responsibilities
 
-These are properties of the current design, not vulnerabilities. Anyone deploying TalntFlow AI should
+These are properties of the current design, not vulnerabilities. Anyone deploying TalentFlow AI should
 know them:
 
 - **There's no user authentication.** Anyone who can open the URL can use the app. Put the

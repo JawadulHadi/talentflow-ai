@@ -28,12 +28,12 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/team")({
   head: () => ({
     meta: [
-      { title: "Team & roles — TalntFlow AI" },
+      { title: "Team & roles — TalentFlow AI" },
       {
         name: "description",
         content: "Manage recruitment team members, role hierarchy, and permissions.",
       },
-      { property: "og:title", content: "Team & roles — TalntFlow AI" },
+      { property: "og:title", content: "Team & roles — TalentFlow AI" },
     ],
   }),
   component: TeamPage,

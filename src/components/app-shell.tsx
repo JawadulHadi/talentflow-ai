@@ -75,7 +75,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           className="flex items-center justify-center gap-2 border-b border-border bg-accent/90 px-4 py-2 text-sm font-medium text-accent-foreground animate-in fade-in slide-in-from-top-2"
         >
           <WifiOff className="size-4" />
-          TalntFlow Agent is offline. You are using the local engine — recommendations and triage
+          TalentFlow Agent is offline. You are using the local engine — recommendations and triage
           run on this device.
         </div>
       )}
@@ -87,7 +87,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             </div>
             <div>
               <span className="font-display text-xl font-bold tracking-tight text-foreground">
-                TalntFlow<span className="text-primary">.ai</span>
+                TalentFlow<span className="text-primary">.ai</span>
               </span>
               <span className="hidden text-[10px] uppercase tracking-[0.2em] text-muted-foreground sm:block">
                 ATS & Job Board Hub

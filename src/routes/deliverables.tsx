@@ -13,12 +13,12 @@ import type { JobDescription } from "@/lib/ats/types";
 export const Route = createFileRoute("/deliverables")({
   head: () => ({
     meta: [
-      { title: "Deliverables — TalntFlow AI" },
+      { title: "Deliverables — TalentFlow AI" },
       {
         name: "description",
         content: "Edit your job description and interview guide, then export professional PDFs.",
       },
-      { property: "og:title", content: "Deliverables — TalntFlow AI" },
+      { property: "og:title", content: "Deliverables — TalentFlow AI" },
       {
         property: "og:description",
         content: "Job description and STAR interview guide workspace with PDF export.",

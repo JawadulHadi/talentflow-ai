@@ -1,5 +1,7 @@
 {
-  "name": "TalntFlow AI",
-  "description": "TalntFlow AI — Autonomous ATS, AI Candidate Scoring, and Multi-Job Board Integration Hub.",
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "name": "TalentFlow AI",
+  "description": "TalentFlow AI — Autonomous ATS, AI Candidate Scoring, and Multi-Job Board Integration Hub.",
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }

@@ -100,7 +100,7 @@ export function KanbanPipelineBoard({
             </span>
           </div>
           <h1 className="mt-2 text-4xl font-bold tracking-tight text-foreground">
-            TalntFlow Pipeline
+            TalentFlow Pipeline
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">
             Drag cards between stages, or open a candidate to review, email or reject.

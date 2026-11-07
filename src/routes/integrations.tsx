@@ -8,12 +8,12 @@ import { timeAgo } from "@/lib/ats/analytics";
 export const Route = createFileRoute("/integrations")({
   head: () => ({
     meta: [
-      { title: "Integrations — TalntFlow AI" },
+      { title: "Integrations — TalentFlow AI" },
       {
         name: "description",
-        content: "Connect sign-in, job boards and HRIS systems to TalntFlow AI.",
+        content: "Connect sign-in, job boards and HRIS systems to TalentFlow AI.",
       },
-      { property: "og:title", content: "Integrations — TalntFlow AI" },
+      { property: "og:title", content: "Integrations — TalentFlow AI" },
     ],
   }),
   component: IntegrationsPage,
@@ -29,7 +29,7 @@ function IntegrationsPage() {
         <p className="text-xs uppercase tracking-[0.25em] text-primary">Connections</p>
         <h1 className="text-4xl font-bold tracking-tight text-foreground">Integrations</h1>
         <p className="mt-1 text-sm text-muted-foreground">
-          Sign-in, job boards and HRIS systems that feed candidates into TalntFlow AI.
+          Sign-in, job boards and HRIS systems that feed candidates into TalentFlow AI.
         </p>
       </div>
 

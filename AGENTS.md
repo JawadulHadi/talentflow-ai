@@ -1,4 +1,4 @@
-## Architecture
+# Architecture
 
 - All ATS data flows through zustand stores in src/stores using the adapter in src/lib/ats/storage-service.ts — swap that adapter to sync with a backend. Persisted shape changes go through the store's `version` + `migrate`, never a new storage key.
 - AI calls go through src/lib/ats/ai-service.ts, which falls back to the local engines (src/lib/ats/scoring.ts, `runLocalAgent` in src/lib/ats/agent.ts) and flips the offline banner.
