@@ -4,5 +4,5 @@ contact_links:
     url: https://github.com/JawadulHadi/talentflow-ai/security/advisories/new
     about: Report security issues privately, not in a public issue.
   - name: Live demo
-    url: https://talentflow-ai.vercel.app
+    url: https://talntflow-ai.vercel.app
     about: Try the latest release before filing an issue.

@@ -7,6 +7,7 @@ import {
   ClipboardCheck,
   FileText,
   KanbanSquare,
+  Palette,
   RotateCcw,
   Share2,
   Sparkles,
@@ -35,6 +36,7 @@ const nav = [
   { to: "/integrations", label: "Integrations", icon: Share2 },
   { to: "/scorecard", label: "Scorecard", icon: ClipboardCheck },
   { to: "/deliverables", label: "Deliverables", icon: FileText },
+  { to: "/brand", label: "Brand", icon: Palette },
 ] as const;
 
 const themeLabels: Record<ThemeName, string> = {

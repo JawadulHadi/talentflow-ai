@@ -11,7 +11,7 @@
 
 <br/>
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-talentflow--ai.vercel.app-000000?logo=vercel&logoColor=white)](https://talentflow-ai.vercel.app)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-talntflow--ai.vercel.app-000000?logo=vercel&logoColor=white)](https://talntflow-ai.vercel.app)
 [![Release](https://img.shields.io/github/v/release/JawadulHadi/talentflow-ai?color=7C3AED&label=release)](https://github.com/JawadulHadi/talentflow-ai/releases)
 [![License: MIT](https://img.shields.io/badge/license-MIT-10B981.svg)](LICENSE)
 [![Built with TanStack Start](https://img.shields.io/badge/TanStack_Start-React_19-06B6D4)](https://tanstack.com/start)
@@ -21,7 +21,7 @@
 
 **TalentFlow AI** is a lightweight applicant tracking system (ATS) with an AI recruiting agent, structured STAR scorecards and hiring analytics. It gives a small recruiting team the pipeline visibility of an enterprise ATS without the enterprise ATS.
 
-> **Live demo:** <https://talentflow-ai.vercel.app> — demo data lives in your browser (`localStorage`); use the reset button in the header to restore it.
+> **Live demo:** <https://talntflow-ai.vercel.app> — demo data lives in your browser (`localStorage`); use the reset button in the header to restore it.
 
 
 ## System Architecture
@@ -102,7 +102,8 @@ The agent reads a snapshot and **never writes**. A human approves every proposal
 - **Scorecards** — 10 weighted STAR questions with a deterministic score and verdict; Claude writes the narrative summary when connected.
 - **Analytics** — Time to fill, stage velocity, funnel with bottleneck audit, source ROI, and diversity reporting based only on voluntary self-identification.
 - **Team & Integrations** — Role hierarchy with pending invites; simulated job-board and HRIS connections.
-- **Themes** — Frosted Slate, Frosted Ember, Paper Light and Signal Emerald.
+- **Themes** - Frosted Slate, Frosted Ember, Paper Light and Signal Emerald.
+- **Brand & voice** (`/brand`) - The candidate emails the app sends, job post format, scorecard PDF header, logo, palette, tokens and type scale, all rendered from the same source the product uses.
 
 ---
 
@@ -111,7 +112,7 @@ The agent reads a snapshot and **never writes**. A human approves every proposal
 ```text
 src/
   routes/                 one file per page: index (analytics), pipeline, agent, jobs, team,
-                          integrations, scorecard, deliverables; __root is the HTML shell
+                          integrations, scorecard, deliverables, brand; __root is the HTML shell
   components/             app shell, Kanban board, candidate drawer, add-candidate dialog, ui/ (shadcn)
   stores/
     ats-store.ts          candidates, jobs, team, integrations, ratings, JD; actions and migration
@@ -145,7 +146,7 @@ Prerequisites: **Node.js 22.12+** and npm.
 
 ```sh
 git clone https://github.com/JawadulHadi/talentflow-ai.git
-cd talent-flow-ai
+cd talentflow-ai
 npm install
 npm run dev      # http://localhost:3000
 npm test         # unit tests
@@ -155,13 +156,23 @@ To enable Claude locally, create `.env` from `.env.example` and set `ANTHROPIC_A
 
 ---
 
-## Deployment (Vercel)
+## Deployment
 
-On Vercel, Nitro detects the platform and writes `.vercel/output`: static assets plus one Node function for SSR and server functions. `vercel.json` pins `npm ci` and `npm run build`.
+On Vercel, Nitro writes `.vercel/output`: static assets plus one Node function for SSR and server functions. `vercel.json` pins `npm ci` and `npm run build`.
 
 ```sh
 npx vercel deploy --prod
 ```
+
+Anywhere else, the build targets a Node server:
+
+```sh
+npm ci
+npm run build    # emits .output with the node-server preset
+npm start        # serves .output/server/index.mjs on $PORT (default 3000)
+```
+
+`PORT` and `HOST` are respected, so the same build runs in Docker, on a VM, or behind a reverse proxy.
 
 **⚠️ Security Warning:** The deployment has no user authentication. Anyone with the URL can trigger agent runs. Before setting `ANTHROPIC_API_KEY` on a public URL, add auth or Vercel Deployment Protection and set a spend limit on the key.
 
@@ -209,4 +220,3 @@ npx vercel deploy --prod
 [![Email](https://img.shields.io/badge/Email-EA4335?style=flat-square&logo=gmail&logoColor=white)](mailto:jawadulhadicc@gmail.com?subject=Hello%20Jawad&body=Hi%20Jawad%2C%0A%0AI%20came%20across%20your%20profile.)
 
 </div>
-```

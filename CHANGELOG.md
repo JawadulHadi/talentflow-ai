@@ -6,9 +6,33 @@ All notable changes to TalentFlow AI are documented here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- **Brand & voice page** (`/brand`): the five candidate emails the app actually sends (rendered
+  from `emailFor()`), the job post format, the scorecard PDF header, logo lockups with
+  do/don't rules, the fixed brand palette, click-to-copy semantic tokens, the Fraunces/Manrope
+  type scale, and a live preview of all four themes. Reachable from the main navigation.
+
+### Changed
+
+- `npm run build` now targets a Node server outside Vercel (`node-server` preset) and
+  `npm start` serves it, so the app can be deployed to any container or VM. Vercel builds
+  still emit the Build Output API via the `vercel` preset.
+- `package.json` declares `engines.node >= 22.12`, matching the documented prerequisite.
+- README banner and logo assets renamed to drop the duplicated `.svg.svg` / `.svg.png`
+  suffixes.
+
+### Fixed
+
+- README and issue-template links pointed at `https://talentflow-ai.vercel.app`, which is an
+  unrelated site. They point at the real deployment again.
+- The favicon returned 404 on every page: `/repo-logo.png` was referenced but never published.
+  It now ships from `public/` with the correct `image/png` type.
+- Removed the unused `sharp` dependency (it was never imported) from `package.json`.
+
 ## [1.0.0] - 2026-09-30
 
-First production release, deployed at <https://talentflow-ai.vercel.app>.
+First production release, deployed at <https://talntflow-ai.vercel.app>.
 
 ### Added
 

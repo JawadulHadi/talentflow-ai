@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AgentRouteImport } from './routes/agent'
+import { Route as BrandRouteImport } from './routes/brand'
 import { Route as DeliverablesRouteImport } from './routes/deliverables'
 import { Route as IntegrationsRouteImport } from './routes/integrations'
 import { Route as JobsRouteImport } from './routes/jobs'
@@ -26,6 +27,11 @@ const IndexRoute = IndexRouteImport.update({
 const AgentRoute = AgentRouteImport.update({
   id: '/agent',
   path: '/agent',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BrandRoute = BrandRouteImport.update({
+  id: '/brand',
+  path: '/brand',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DeliverablesRoute = DeliverablesRouteImport.update({
@@ -62,6 +68,7 @@ const TeamRoute = TeamRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/agent': typeof AgentRoute
+  '/brand': typeof BrandRoute
   '/deliverables': typeof DeliverablesRoute
   '/integrations': typeof IntegrationsRoute
   '/jobs': typeof JobsRoute
@@ -72,6 +79,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/agent': typeof AgentRoute
+  '/brand': typeof BrandRoute
   '/deliverables': typeof DeliverablesRoute
   '/integrations': typeof IntegrationsRoute
   '/jobs': typeof JobsRoute
@@ -83,6 +91,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/agent': typeof AgentRoute
+  '/brand': typeof BrandRoute
   '/deliverables': typeof DeliverablesRoute
   '/integrations': typeof IntegrationsRoute
   '/jobs': typeof JobsRoute
@@ -95,6 +104,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/agent'
+    | '/brand'
     | '/deliverables'
     | '/integrations'
     | '/jobs'
@@ -105,6 +115,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/agent'
+    | '/brand'
     | '/deliverables'
     | '/integrations'
     | '/jobs'
@@ -115,6 +126,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/agent'
+    | '/brand'
     | '/deliverables'
     | '/integrations'
     | '/jobs'
@@ -126,6 +138,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AgentRoute: typeof AgentRoute
+  BrandRoute: typeof BrandRoute
   DeliverablesRoute: typeof DeliverablesRoute
   IntegrationsRoute: typeof IntegrationsRoute
   JobsRoute: typeof JobsRoute
@@ -148,6 +161,13 @@ declare module '@tanstack/react-router' {
       path: '/agent'
       fullPath: '/agent'
       preLoaderRoute: typeof AgentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/brand': {
+      id: '/brand'
+      path: '/brand'
+      fullPath: '/brand'
+      preLoaderRoute: typeof BrandRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/deliverables': {
@@ -198,6 +218,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AgentRoute: AgentRoute,
+  BrandRoute: BrandRoute,
   DeliverablesRoute: DeliverablesRoute,
   IntegrationsRoute: IntegrationsRoute,
   JobsRoute: JobsRoute,
