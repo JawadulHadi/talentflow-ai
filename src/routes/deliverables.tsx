@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useAtsStore } from "@/stores/ats-store";
+import { useBrandStore } from "@/stores/brand-store";
 import { buildRecommendation } from "@/lib/ats/scoring";
 import { exportInterviewGuide, exportJobDescription, exportPackage } from "@/lib/ats/pdf";
 import type { JobDescription } from "@/lib/ats/types";
@@ -41,13 +42,15 @@ function DeliverablesPage() {
   const candidates = useAtsStore((s) => s.candidates);
   const cid = useAtsStore((s) => s.scorecardCandidateId);
   const ratings = useAtsStore((s) => s.ratings);
+  const brand = useBrandStore((s) => s.config);
+  const pdfBrand = { company: brand.companyName, color: brand.primary };
   const set = (patch: Partial<JobDescription>) => updateJd({ ...jd, ...patch });
 
   const downloadPackage = () => {
     const c = candidates.find((x) => x.id === cid) ?? candidates[0];
     if (!c) return;
     const r = ratings[c.id] ?? {};
-    exportPackage(jd, questions, c, r, buildRecommendation(c.name, questions, r));
+    exportPackage(jd, questions, c, r, buildRecommendation(c.name, questions, r), pdfBrand);
     toast.success("Recruitment package downloaded");
   };
 
@@ -134,7 +137,11 @@ function DeliverablesPage() {
                   <h2 className="text-2xl text-foreground">{jd.title}</h2>
                   <p className="text-sm text-muted-foreground">{jd.meta}</p>
                 </div>
-                <Button size="sm" variant="outline" onClick={() => exportJobDescription(jd)}>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={() => exportJobDescription(jd, pdfBrand)}
+                >
                   <Download className="size-4" /> PDF
                 </Button>
               </div>
@@ -170,7 +177,7 @@ function DeliverablesPage() {
               <Button
                 size="sm"
                 variant="outline"
-                onClick={() => exportInterviewGuide(jd, questions)}
+                onClick={() => exportInterviewGuide(jd, questions, pdfBrand)}
               >
                 <Download className="size-4" /> PDF
               </Button>

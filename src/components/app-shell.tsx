@@ -7,7 +7,7 @@ import {
   ClipboardCheck,
   FileText,
   KanbanSquare,
-  Palette,
+  Paintbrush,
   RotateCcw,
   Share2,
   Sparkles,
@@ -23,6 +23,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useAtsStore } from "@/stores/ats-store";
+import { useBrandStore } from "@/stores/brand-store";
 import { useUiStore } from "@/stores/ui-store";
 import { checkAgentHealth } from "@/lib/ats/ai-service";
 import { THEMES, type ThemeName } from "@/lib/ats/types";
@@ -36,7 +37,7 @@ const nav = [
   { to: "/integrations", label: "Integrations", icon: Share2 },
   { to: "/scorecard", label: "Scorecard", icon: ClipboardCheck },
   { to: "/deliverables", label: "Deliverables", icon: FileText },
-  { to: "/brand", label: "Brand", icon: Palette },
+  { to: "/brand", label: "Branding", icon: Paintbrush },
 ] as const;
 
 const themeLabels: Record<ThemeName, string> = {
@@ -59,9 +60,11 @@ export function AppShell({ children }: { children: ReactNode }) {
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
-    void Promise.all([useAtsStore.persist.rehydrate(), useUiStore.persist.rehydrate()]).then(() =>
-      setHydrated(true),
-    );
+    void Promise.all([
+      useAtsStore.persist.rehydrate(),
+      useUiStore.persist.rehydrate(),
+      useBrandStore.persist.rehydrate(),
+    ]).then(() => setHydrated(true));
     void checkAgentHealth().then((ok) => setFallback(!ok));
   }, [setFallback]);
 

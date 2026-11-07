@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/select";
 import { StarInput } from "@/components/candidate-drawer";
 import { useAtsStore } from "@/stores/ats-store";
+import { useBrandStore } from "@/stores/brand-store";
 import { useUiStore } from "@/stores/ui-store";
 import { buildRecommendation } from "@/lib/ats/scoring";
 import { evaluateScorecard } from "@/lib/ats/ai-service";
@@ -45,6 +46,7 @@ function ScorecardPage() {
   const allRatings = useAtsStore((s) => s.ratings);
   const setRating = useAtsStore((s) => s.setRating);
   const setFallback = useUiStore((s) => s.setFallback);
+  const brand = useBrandStore((s) => s.config);
   const [busy, setBusy] = useState(false);
   const [agentRec, setAgentRec] = useState<Recommendation | null>(null);
 
@@ -97,7 +99,12 @@ function ScorecardPage() {
           </Select>
           <Button
             variant="outline"
-            onClick={() => exportScorecard(candidate, questions, ratings, rec)}
+            onClick={() =>
+              exportScorecard(candidate, questions, ratings, rec, {
+                company: brand.companyName,
+                color: brand.primary,
+              })
+            }
           >
             <Download className="size-4" /> Download PDF
           </Button>

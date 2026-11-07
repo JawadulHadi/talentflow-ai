@@ -1,13 +1,30 @@
 import { jsPDF } from "jspdf";
 import { formatDate } from "./analytics";
+import { hexToRgb } from "./brand";
 import type { Candidate, JobDescription, Ratings, Recommendation, StarQuestion } from "./types";
 
 const M = 18;
 const W = 210;
+const INK = "#161E2E";
+
+/** Employer branding passed in from the brand store; every field is optional. */
+export interface PdfBrand {
+  company?: string;
+  color?: string;
+}
 
 class Doc {
   pdf = new jsPDF({ unit: "mm", format: "a4" });
   y = M;
+  brand: PdfBrand;
+
+  constructor(brand: PdfBrand = {}) {
+    this.brand = brand;
+  }
+
+  private accent() {
+    return hexToRgb(this.brand.color ?? INK);
+  }
 
   ensure(h: number) {
     if (this.y + h > 280) {
@@ -16,21 +33,29 @@ class Doc {
     }
   }
   header(title: string, subtitle: string) {
-    this.pdf.setFillColor(22, 30, 46);
+    const { r, g, b } = this.accent();
+    this.pdf.setFillColor(r, g, b);
     this.pdf.rect(0, 0, W, 34, "F");
     this.pdf.setTextColor(255, 255, 255);
     this.pdf.setFont("helvetica", "bold").setFontSize(18).text(title, M, 16);
     this.pdf.setFont("helvetica", "normal").setFontSize(10).text(subtitle, M, 24);
-    this.pdf.setFontSize(8).text(`TalentFlow AI · ${formatDate(new Date().toISOString())}`, M, 30);
+    this.pdf
+      .setFontSize(8)
+      .text(
+        `${this.brand.company ?? "TalentFlow AI"} · ${formatDate(new Date().toISOString())}`,
+        M,
+        30,
+      );
     this.pdf.setTextColor(30, 30, 30);
     this.y = 44;
   }
   h(text: string) {
+    const { r, g, b } = this.accent();
     this.ensure(12);
     this.pdf
       .setFont("helvetica", "bold")
       .setFontSize(12)
-      .setTextColor(40, 60, 110)
+      .setTextColor(r, g, b)
       .text(text, M, this.y);
     this.pdf.setTextColor(30, 30, 30);
     this.y += 7;
@@ -102,22 +127,28 @@ function writeScorecard(d: Doc, c: Candidate, qs: StarQuestion[], r: Ratings, re
   d.p(`Candidate: ${c.name} · ${c.role} · ${c.stage}`, 9);
 }
 
-export function exportJobDescription(jd: JobDescription) {
-  const d = new Doc();
+export function exportJobDescription(jd: JobDescription, brand?: PdfBrand) {
+  const d = new Doc(brand);
   d.header(jd.title, jd.meta);
   writeJd(d, jd);
   d.pdf.save("job-description.pdf");
 }
 
-export function exportInterviewGuide(jd: JobDescription, qs: StarQuestion[]) {
-  const d = new Doc();
+export function exportInterviewGuide(jd: JobDescription, qs: StarQuestion[], brand?: PdfBrand) {
+  const d = new Doc(brand);
   d.header("STAR interview guide", jd.title);
   writeGuide(d, qs);
   d.pdf.save("interview-guide.pdf");
 }
 
-export function exportScorecard(c: Candidate, qs: StarQuestion[], r: Ratings, rec: Recommendation) {
-  const d = new Doc();
+export function exportScorecard(
+  c: Candidate,
+  qs: StarQuestion[],
+  r: Ratings,
+  rec: Recommendation,
+  brand?: PdfBrand,
+) {
+  const d = new Doc(brand);
   d.header(`Candidate scorecard — ${c.name}`, c.role);
   writeScorecard(d, c, qs, r, rec);
   d.pdf.save(`scorecard-${c.name.toLowerCase().replace(/\s+/g, "-")}.pdf`);
@@ -129,8 +160,9 @@ export function exportPackage(
   c: Candidate,
   r: Ratings,
   rec: Recommendation,
+  brand?: PdfBrand,
 ) {
-  const d = new Doc();
+  const d = new Doc(brand);
   d.header("Complete recruitment package", jd.title);
   writeJd(d, jd);
   d.newPage();

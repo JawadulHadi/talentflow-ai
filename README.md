@@ -103,7 +103,7 @@ The agent reads a snapshot and **never writes**. A human approves every proposal
 - **Analytics** — Time to fill, stage velocity, funnel with bottleneck audit, source ROI, and diversity reporting based only on voluntary self-identification.
 - **Team & Integrations** — Role hierarchy with pending invites; simulated job-board and HRIS connections.
 - **Themes** - Frosted Slate, Frosted Ember, Paper Light and Signal Emerald.
-- **Brand & voice** (`/brand`) - The candidate emails the app sends, job post format, scorecard PDF header, logo, palette, tokens and type scale, all rendered from the same source the product uses.
+- **Branding** (`/brand`) - Set the employer brand candidates see: company name, logo, colour, fonts and email signature, with a live preview of the job post, candidate email and PDF scorecard. Saved branding is applied to outbound emails and every exported PDF.
 
 ---
 

@@ -8,10 +8,13 @@ All notable changes to TalentFlow AI are documented here. The format follows
 
 ### Added
 
-- **Brand & voice page** (`/brand`): the five candidate emails the app actually sends (rendered
-  from `emailFor()`), the job post format, the scorecard PDF header, logo lockups with
-  do/don't rules, the fixed brand palette, click-to-copy semantic tokens, the Fraunces/Manrope
-  type scale, and a live preview of all four themes. Reachable from the main navigation.
+- **Branding page** (`/brand`): employer branding the way an ATS ships it — company name, tagline,
+  website, logo upload (downscaled to 256 px), brand and accent colour with presets, heading/body
+  font pairing, candidate-email signature and reply-to, and the "via TalentFlow AI" attribution
+  switch. A live candidate view previews the job post, the application-received email and the
+  scorecard PDF header at desktop or phone width. Saved branding is applied to outbound candidate
+  emails (`logEmail`) and to every PDF exported from Deliverables and Scorecard, and persists
+  through the shared storage adapter (`qeloma-brand-v1`, versioned with a defaults merge).
 
 ### Changed
 

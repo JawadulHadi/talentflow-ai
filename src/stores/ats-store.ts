@@ -11,6 +11,7 @@ import {
   starQuestions,
 } from "@/lib/ats/seed";
 import { persistence } from "@/lib/ats/storage-service";
+import { useBrandStore } from "@/stores/brand-store";
 import type {
   Candidate,
   CandidateEmailLog,
@@ -69,13 +70,19 @@ const logEmail = (
   template: EmailTemplate,
   c: Pick<Candidate, "name" | "role">,
   sentAt: string,
-): CandidateEmailLog => ({
-  id: uid(),
-  templateType: template,
-  ...emailFor(template, c),
-  sentAt,
-  status: "Sent",
-});
+): CandidateEmailLog => {
+  const { subject, body } = emailFor(template, c);
+  const signature = useBrandStore.getState().config.emailSignature.trim();
+  return {
+    id: uid(),
+    templateType: template,
+    subject,
+    // The employer's branding signature is appended to every outbound message.
+    body: signature ? `${body}\n\n${signature}` : body,
+    sentAt,
+    status: "Sent",
+  };
+};
 
 const autoTemplate: Partial<Record<Stage, EmailTemplate>> = {
   Screened: "feedback",
