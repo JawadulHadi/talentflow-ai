@@ -78,14 +78,14 @@ graph TD
 
 The agent reads a snapshot and **never writes**. A human approves every proposal. It runs up to 8 steps using the following tools:
 
-| Tool | Kind | Purpose |
-| :--- | :--- | :--- |
-| `get_pipeline_overview` | read | KPIs, funnel, bottleneck, open applications per job and stage |
-| `list_candidates` | read | Compact rows filtered by job, stage and days in stage |
-| `get_candidate` | read | Full record: history, skills, strengths, gaps, recent feedback |
-| `propose_stage_move` | proposal | Move to another stage (standard stage emails follow on approval) |
-| `propose_email` | proposal | Reminder or feedback email |
-| `propose_note` | proposal | Internal note, also used to flag concerns |
+| Tool                    | Kind     | Purpose                                                          |
+| :---------------------- | :------- | :--------------------------------------------------------------- |
+| `get_pipeline_overview` | read     | KPIs, funnel, bottleneck, open applications per job and stage    |
+| `list_candidates`       | read     | Compact rows filtered by job, stage and days in stage            |
+| `get_candidate`         | read     | Full record: history, skills, strengths, gaps, recent feedback   |
+| `propose_stage_move`    | proposal | Move to another stage (standard stage emails follow on approval) |
+| `propose_email`         | proposal | Reminder or feedback email                                       |
+| `propose_note`          | proposal | Internal note, also used to flag concerns                        |
 
 - **Validation:** Proposals are validated (candidate exists, active, known stage/template, max 1 of each kind per candidate, max 15 total).
 - **Strictness:** Tool schemas use `strict: true`. Requests use effort `medium` and `fallbacks: "default"`.
@@ -98,7 +98,7 @@ The agent reads a snapshot and **never writes**. A human approves every proposal
 - **Jobs** — Requisitions with Draft → Active → Closed lifecycle and live applicant counts per job.
 - **Pipeline** — Per-job Kanban across Sourced, Screened, Interviewing, Offer Sent and Hired. Stage moves are timestamped and send the matching candidate email.
 - **Candidates** — Add manually with résumé attachment, duplicate detection per job, rejection with reason (and rejection email), reactivation, and permanent deletion for data-erasure requests.
-- **TalentFlow Agent** — Reads the pipeline through tools and returns proposals that a recruiter approves one by one. Runs on Claude when `ANTHROPIC_API_KEY` is set, falls back to local deterministic triage rules otherwise.
+- **TalentFlow Agent** — Reads the pipeline through tools and returns proposals that a recruiter approves one by one. Runs on Claude when `` is set, falls back to local deterministic triage rules otherwise.
 - **Scorecards** — 10 weighted STAR questions with a deterministic score and verdict; Claude writes the narrative summary when connected.
 - **Analytics** — Time to fill, stage velocity, funnel with bottleneck audit, source ROI, and diversity reporting based only on voluntary self-identification.
 - **Team & Integrations** — Role hierarchy with pending invites; simulated job-board and HRIS connections.
@@ -156,7 +156,7 @@ npm run dev      # http://localhost:3000
 npm test         # unit tests
 ```
 
-To enable Claude locally, create `.env` from `.env.example` and set `ANTHROPIC_API_KEY`.
+To enable Claude locally, create `.env` from `.env.example` and set ``.
 
 ---
 
@@ -178,20 +178,20 @@ npm start        # serves .output/server/index.mjs on $PORT (default 3000)
 
 `PORT` and `HOST` are respected, so the same build runs in Docker, on a VM, or behind a reverse proxy.
 
-**⚠️ Security Warning:** The deployment has no user authentication. Anyone with the URL can trigger agent runs. Before setting `ANTHROPIC_API_KEY` on a public URL, add auth or Vercel Deployment Protection and set a spend limit on the key.
+**⚠️ Security Warning:** The deployment has no user authentication. Anyone with the URL can trigger agent runs. Before setting `` on a public URL, add auth or Vercel Deployment Protection and set a spend limit on the key.
 
 ---
 
 ## Documentation
 
-| Document | What it covers |
-| --- | --- |
+| Document                                     | What it covers                                                    |
+| -------------------------------------------- | ----------------------------------------------------------------- |
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | Data flow, persistence and migrations, the agent loop, deployment |
-| [CHANGELOG.md](CHANGELOG.md) | Release history |
-| [CONTRIBUTING.md](CONTRIBUTING.md) | Setup, required checks, project rules, release process |
-| [SECURITY.md](SECURITY.md) | Reporting vulnerabilities and deployment responsibilities |
-| [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | Community standards |
-| [AGENTS.md](AGENTS.md) | Architecture rules for AI coding agents |
+| [CHANGELOG.md](CHANGELOG.md)                 | Release history                                                   |
+| [CONTRIBUTING.md](CONTRIBUTING.md)           | Setup, required checks, project rules, release process            |
+| [SECURITY.md](SECURITY.md)                   | Reporting vulnerabilities and deployment responsibilities         |
+| [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)     | Community standards                                               |
+| [AGENTS.md](AGENTS.md)                       | Architecture rules for AI coding agents                           |
 
 ---
 
