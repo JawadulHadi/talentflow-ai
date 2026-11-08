@@ -14,7 +14,7 @@ npm install          # .npmrc sets legacy-peer-deps
 npm run dev          # http://localhost:3000
 ```
 
-Claude is optional. Copy `.env.example` to `.env` and set `ANTHROPIC_API_KEY` to use it; without a
+Claude is optional. Copy `.env.example` to `.env` and set `` to use it; without a
 key the agent and scorecard run on the local engines.
 
 ## Before you open a pull request

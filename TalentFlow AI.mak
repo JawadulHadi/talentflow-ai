@@ -46,7 +46,7 @@ Yes, it fits the current setup, and it's built. The loop runs on the server and 
 - **Without an API key:** fixed local triage rules run and the offline banner shows. That is what is live now; it produced 7 sensible proposals in testing.
 - **The scorecard "Ask TalentFlow Agent" button** also uses Claude now. The score and verdict stay calculated locally; Claude writes the summary.
 
-**To switch Claude on,** add `ANTHROPIC_API_KEY` in the talentflow-ai project's environment variables on Vercel and redeploy. There's no login, so anyone with the URL could run the agent on your key. Put Vercel Deployment Protection or auth in front first, and set a spend limit on the key.
+**To switch Claude on,** add `` in the talentflow-ai project's environment variables on Vercel and redeploy. There's no login, so anyone with the URL could run the agent on your key. Put Vercel Deployment Protection or auth in front first, and set a spend limit on the key.
 
 **Longer term,** once `storage-service.ts` is backed by a real database (Supabase or your NestJS service), the same tools can read the database directly and run on a schedule, for example a nightly triage. That's the step to a truly autonomous agent.
 

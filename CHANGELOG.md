@@ -49,7 +49,7 @@ First production release, deployed at <https://talntflow-ai.vercel.app>.
 
 - **TalentFlow Agent** (`/agent`): a tool-use loop on Claude (`claude-opus-5-5`) that reads a
   read-only pipeline snapshot and returns proposals (stage moves, reminder or feedback emails,
-  notes). Each proposal applies only after a recruiter approves it. Without `ANTHROPIC_API_KEY`,
+  notes). Each proposal applies only after a recruiter approves it. Without ``,
   local triage rules produce the same kind of proposals.
 - Claude-written scorecard summaries. The weighted score and verdict stay deterministic.
 - Job lifecycle: Draft → Active → Closed, with live applicant counts and a per-job pipeline filter.

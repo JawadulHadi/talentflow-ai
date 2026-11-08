@@ -110,7 +110,7 @@ Guardrails:
   declines.
 - The SDK and key load only inside server functions; the browser bundle contains neither.
 
-When `ANTHROPIC_API_KEY` is missing or the call fails, `runLocalAgent` runs the same tool executors
+When `` is missing or the call fails, `runLocalAgent` runs the same tool executors
 with fixed triage rules and the offline banner appears.
 
 The scorecard summary is a single structured-output call (effort `low`, JSON schema). Claude writes
@@ -120,7 +120,7 @@ the narrative only; the weighted score and verdict come from `scoring.ts`.
 
 On Vercel, Nitro detects the platform and writes `.vercel/output`: static assets plus one Node
 function for SSR and server functions. `vercel.json` pins `npm ci` and `npm run build`. The only
-environment variable is the optional `ANTHROPIC_API_KEY`.
+environment variable is the optional ``.
 
 ## Next steps
 
