@@ -8,11 +8,11 @@ import {
 } from "./agent";
 
 /**
- * Server functions for the TalentFlow Agent. Claude is enabled by setting ANTHROPIC_API_KEY
+ * Server functions for the TalentFlow Agent. Claude is enabled by setting
  * on the server; without it every call returns null and the client uses its local engine.
  */
 
-const configured = () => Boolean(process.env["ANTHROPIC_API_KEY"]);
+const configured = () => Boolean(process.env["key"]);
 
 function fail(message: string): never {
   throw new Error(`Invalid agent request: ${message}`);

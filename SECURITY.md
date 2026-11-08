@@ -29,7 +29,7 @@ know them:
   deployment behind authentication or Vercel Deployment Protection if it holds real candidate data.
 - **Data lives in the browser.** Candidate records are stored in `localStorage` on each device and
   are not encrypted at rest.
-- **The Claude key is server-side only.** `ANTHROPIC_API_KEY` is read inside server functions and
+- **The Claude key is server-side only.** `` is read inside server functions and
   never shipped to the browser. On a public deployment without authentication, though, anyone can
   trigger agent runs that spend the key's budget. Add authentication first and set a spend limit on
   the key.
